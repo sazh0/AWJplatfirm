@@ -1,0 +1,638 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #E63A46;
+  --primary-hover: #142a4d;
+  --secondary-color: #1D3557;
+  --background-color: #f8f7f7;
+  --text-color: #333;
+  --input-border: #ddd;
+  --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  --success-color: #4caf50;
+  --error-color: #f44336;
+  --transition-speed: 0.3s;
+}
+
+body {
+  font-family: "DINNextLTArabic-Regular", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: var(--background-color);
+  direction: rtl;
+}
+
+/* Back Arrow Styling */
+.back-arrow-nn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-speed) ease;
+}
+
+.back-arrow-nn:hover {
+  background: rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
+}
+
+.back-arrow-nn:active {
+  transform: scale(0.95);
+}
+
+/* Language Toggle for Sign In Page */
+.signin-language-toggle {
+  position: fixed;
+  top: 20px;
+  left: 80px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-speed) ease;
+}
+
+.signin-language-toggle:hover {
+  background: rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
+}
+
+.signin-language-icon {
+  color: #fff;
+  transition: var(--transition-speed) ease;
+}
+
+.signin-language-selector {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  /* Position dropdown aligned with the button */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 100px;
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.signin-language-toggle:hover .signin-language-selector {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.signin-language-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: var(--text-color);
+}
+
+.signin-language-option.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.signin-language-option:not(.active) {
+  color: #555;
+}
+
+.signin-language-option:not(.active):hover {
+  background-color: #f1f1f1;
+}
+
+/* Triangle pointer for dropdown */
+.signin-language-selector:before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 15px;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+/* Same positioning for both RTL and LTR to avoid shifting */
+[dir="ltr"] .signin-language-toggle {
+  left: 80px;
+  /* Keep it consistent in both RTL and LTR */
+}
+
+[dir="ltr"] .signin-language-selector:before {
+  left: 80px;
+}
+
+/* Main Container */
+.sign-in-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--background-color);
+  /* Changed from gradient to solid color */
+}
+
+/* Logo Styling */
+.logo-image {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  height: 70px;
+  width: auto;
+  z-index: 5;
+}
+
+/* Background Squares */
+.side-squares {
+  position: fixed;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100vh;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+/* Sign In Container */
+.sign-in-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 10px;
+  position: relative;
+  z-index: 2;
+}
+
+
+/* Sign In Box */
+.sign-in-box {
+  position: relative;
+  right: 0;
+  /* Remove the -15% positioning that may cause issues */
+  width: 400px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--box-shadow);
+  padding: 40px 30px;
+  text-align: center;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  animation: fadeInUp 0.8s forwards;
+  margin: 0 auto;
+  /* Center the box */
+}
+
+.sign-in-box:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Title */
+.sign-in-title {
+  color: var(--text-color);
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  position: relative;
+}
+
+.sign-in-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary-color);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Form Styling */
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+[dir="ltr"] .form-group {
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  right: 12px;
+  color: #777;
+  font-size: 18px;
+}
+
+[dir="ltr"] .input-icon {
+  right: 12px;
+  left: auto;
+}
+
+.sign-in-form input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  background-color: #f9f9f9;
+}
+
+.sign-in-form input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(119, 119, 119, 0.2);
+}
+
+.sign-in-form input::placeholder {
+  color: #aaa;
+}
+
+/* Button Styling */
+.submit-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease, transform 0.2s ease;
+  width: 100%;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.submit-button:active {
+  transform: scale(0.98);
+}
+
+.submit-button.loading {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.submit-button.loading::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 15px;
+  margin-top: -10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spinner 0.6s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* OTP Section */
+.otp-section {
+  width: 100%;
+}
+
+/* Success Container */
+.success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  margin: 10px 0;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Success Icon */
+.success-icon {
+  font-size: 30px;
+  color: var(--success-color);
+  margin-bottom: -15px;
+  animation: successIconPop 0.6s ease-out forwards;
+}
+
+/* Success Message */
+.success-message {
+  color: #2a6c2e;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 25px;
+  animation: successTextFade 0.5s ease-out forwards;
+}
+
+
+/* Dashboard Button */
+.dashboard-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 85%;
+  margin: 10px auto;
+  animation: successButtonAppear 0.5s 0.3s both;
+}
+
+.dashboard-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-3px);
+}
+
+.dashboard-btn:active {
+  transform: translateY(-1px);
+}
+
+
+/* Resend OTP */
+.resend-otp {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 20px;
+  gap: 4px;
+}
+
+.resend-otp p {
+  color: #555;
+  font-size: 14px;
+}
+
+.resend-link {
+  background: none;
+  border: none;
+  color: #555;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  transition: color var(--transition-speed) ease;
+}
+
+.resend-link:hover {
+  color: var(--primary-color);
+}
+
+/* Login Link */
+.login-link {
+  text-align: center;
+  font-size: 14px;
+  position: static;
+  bottom: auto;
+  width: 100%;
+  max-width: 400px;
+  justify-content: center !important;
+}
+
+.login-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-speed) ease;
+}
+
+.login-link a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* Notification */
+.notification {
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+  animation: slideDown 0.3s ease;
+  border: none;
+  box-shadow: none;
+}
+
+.notification.success {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: #2e7d32;
+}
+
+.notification.error {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: #d32f2f;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1200px) {
+  .sign-in-box {
+    right: 0;
+  }
+
+  .side-squares {
+    left: -130px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .side-squares {
+    left: -190px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sign-in-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px 20px;
+  }
+
+  .side-squares {
+    left: -210px;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+  .sign-in-box {
+    padding: 25px 15px;
+  }
+
+  .sign-in-title {
+    font-size: 24px;
+  }
+
+  .side-squares {
+    opacity: 0.1;
+  }
+
+  .back-arrow-nn {
+    top: 10px;
+    left: 10px;
+    font-size: 26px;
+  }
+
+  .submit-button,
+  .dashboard-btn {
+    padding: 10px 20px;
+  }
+
+}
+
+/* RTL Support for Inputs */
+input[dir="ltr"] {
+  text-align: left;
+}
+
+/* New animations */
+@keyframes successAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes iconAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-10deg);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.2) rotate(5deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes textFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes buttonFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes growLine {
+  to {
+    transform: scaleX(1);
+  }
+}

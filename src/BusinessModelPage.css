@@ -1,0 +1,435 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #e63a46;
+  --primary-light: #ff4d59;
+  --primary-dark: #cc3039;
+  --secondary: #1d3557;
+  --bg-light: #f9f9f9;
+  --border-color: #e1e1e1;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+  --gray: #85858552;
+  --gray-hover: rgba(133, 133, 133, 0.568);
+}
+
+body {
+  font-family: "Tajawal", sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+.business-model-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.Logo {
+  height: 80px;
+  width: auto;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
+  transition: var(--transition);
+}
+
+.Logo:hover {
+  transform: scale(1.05);
+}
+
+.page-header {
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.page-title {
+  color: var(--secondary);
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  margin-top: -30px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.page-subtitle {
+  color: var(--secondary);
+  font-size: 20px;
+  font-weight: 500;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+.BM-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15));
+  transition: var(--transition);
+}
+
+.BM-icon:hover {
+  transform: scale(1.05) rotate(5deg);
+}
+
+.background-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.SmallSqrs1 {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 280px;
+  opacity: 0.7;
+}
+
+.SmallSqrs2 {
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 380px;
+  opacity: 0.7;
+}
+
+.form-container {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  width: 90%;
+  margin: 10px auto 60px;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 40px;
+  transition: var(--transition);
+}
+
+.form-container:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+/* Enhanced timeline styling */
+.timeline {
+  position: relative;
+  /* Establishes a containing block */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+/* Create a continuous line behind the circles */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  /* Vertical center of the container */
+  left: 0;
+  height: 3px;
+  background-color: #e0e0e0;
+  z-index: 1;
+  /* Behind the circles */
+  transform: translateY(-50%);
+}
+
+/* The circle styling */
+.circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  position: relative;
+  transition: transform 0.4s ease, background-color 0.4s ease;
+  z-index: 2;
+  /* Ensures the circles appear on top of the line */
+}
+
+/* Active circle styling */
+.circle.active {
+  background-color: var(--primary);
+  transform: scale(1.2);
+  box-shadow: 0 0 0 4px rgba(230, 58, 70, 0.2);
+}
+
+.line {
+  width: 100px;
+  height: 3px;
+  background-color: #e0e0e0;
+  position: relative;
+  transition: background-color 0.5s ease;
+}
+
+.line.active {
+  background-color: var(--primary);
+}
+
+.question-box {
+  direction: rtl;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.question-box label {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--secondary);
+  margin-bottom: 10px;
+}
+
+.required {
+  color: var(--primary);
+  margin-right: 4px;
+}
+
+.question-box input,
+.question-box select,
+.question-box textarea {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--border-color);
+  font-size: 16px;
+  direction: rtl;
+  background-color: var(--bg-light);
+  font-family: "Tajawal", sans-serif;
+}
+
+.question-box textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.question-box input:focus,
+.question-box select:focus,
+.question-box textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(129, 129, 129, 0.2);
+}
+
+.question-box input::placeholder,
+.question-box select::placeholder,
+.question-box textarea::placeholder {
+  color: #aaa;
+}
+
+.error-message {
+  color: var(--primary);
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  position: relative;
+}
+
+/* Centered buttons (next and submit) */
+.next-btn,
+.submit-btn {
+  padding: 14px 50px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.next-btn:hover,
+.submit-btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.next-btn:active,
+.submit-btn:active {
+  background-color: var(--primary-light);
+}
+
+/* Updated back button styles */
+.back-btn {
+  position: absolute;
+  right: 0;
+  padding: 14px 30px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: var(--gray);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.back-btn:hover {
+  background-color: var(--gray-hover);
+}
+
+/* Loading indicator style */
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+  padding: 40px 0;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid var(--primary);
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  color: var(--secondary);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 36px;
+  }
+
+  .page-subtitle {
+    font-size: 18px;
+  }
+
+  .form-container {
+    padding: 30px;
+  }
+
+  .line {
+    width: 40px;
+  }
+
+  .navigation-buttons {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .back-btn {
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .next-btn,
+  .submit-btn {
+    width: 100%;
+  }
+}
+
+/* Add these styles to your BusinessModelPage.css file */
+
+/* Direction-specific styles for form elements */
+.form-container[dir="ltr"] {
+  text-align: left;
+}
+
+.form-container[dir="rtl"] {
+  text-align: right;
+}
+
+/* Reset input and select styles for RTL/LTR */
+.form-container[dir="ltr"] input,
+.form-container[dir="ltr"] select,
+.form-container[dir="ltr"] textarea {
+  direction: ltr;
+  text-align: left;
+}
+
+.form-container[dir="rtl"] input,
+.form-container[dir="rtl"] select,
+.form-container[dir="rtl"] textarea {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Fix navigation button positioning for LTR mode */
+.form-container[dir="ltr"] .navigation-buttons {
+  flex-direction: row;
+}
+
+.form-container[dir="ltr"] .back-btn {
+  right: auto;
+  left: 0;
+}
+
+.form-container[dir="rtl"] .back-btn {
+  left: auto;
+  right: 0;
+}
+
+/* Question box should follow language direction */
+.form-container[dir="ltr"] .question-box {
+  direction: ltr;
+}
+
+/* Override existing direction for RTL */
+.question-box {
+  direction: inherit;
+}

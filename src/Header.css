@@ -1,0 +1,202 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  direction: rtl;
+}
+
+.logo-with-name {
+  height: 40px;
+  width: auto;
+  transform: scale(2);
+  margin-right: 1%;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  direction: rtl;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: var(--transition);
+  /* Enforce a square shape for the button */
+  width: 3rem;
+  height: 3rem;
+  /* Use flexbox to center the icon */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Normal state border radius */
+  border-radius: 0.25rem;
+}
+
+.btn-secondary:hover {
+  background-color: var(--light-bg);
+  border-radius: 50%;
+}
+
+/* Language toggle button styling */
+.app-language-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+/* Changed from .language-icon to .app-language-icon */
+.app-language-icon {
+  font-size: 1.75rem;
+  transition: transform 0.2s ease;
+}
+
+.app-language-toggle:hover .app-language-icon {
+  transform: scale(1);
+}
+
+/* Language selector dropdown styling */
+.app-language-selector {
+  position: absolute;
+  bottom: -70px;
+  right: -8px;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 80px;
+  padding: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: center;
+}
+
+.app-language-toggle:hover .app-language-selector {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.app-language-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.app-language-option.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.app-language-option:not(.active) {
+  color: var(--text-muted);
+}
+
+.app-language-option:not(.active):hover {
+  background-color: var(--light-bg);
+  color: var(--text-color);
+}
+
+/* Triangle pointer for dropdown */
+.app-language-selector:before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 18px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--card-bg);
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+/* RTL support for Arabic language */
+[dir="rtl"] .app-language-selector {
+  left: -8px;
+  right: auto;
+}
+
+[dir="rtl"] .language-selector {
+  left: -8px;
+  right: auto;
+}
+
+[dir="rtl"] .app-language-selector:before {
+  left: 18px;
+  right: auto;
+}
+
+.user-icon-btn {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 24px;
+  margin-right: -13px;
+  z-index: 100;
+  padding: 5px;
+  order: -1;
+  /* Ensure it appears first in flex layout */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .mobile-menu-toggle {
+    display: flex !important;
+    /* Use !important to override any conflicting styles */
+    align-items: left;
+    justify-content: center;
+    padding: 0.4rem;
+  }
+
+  .logo-with-name {
+    height: 35px;
+    margin-right: 4%;
+  }
+
+  .btn-secondary {
+    font-size: 1.3rem;
+    padding: 0.4rem;
+  }
+
+  .language-selector {
+    bottom: -70px;
+    width: 70px;
+  }
+}

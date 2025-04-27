@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: 'DINNextLTArabic-Bold';
+    src: url('/fonts/DINNextLTArabic-Bold-4.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DINNextLTArabic-Regular';
+    src: url('/fonts/DINNextLTArabic-Regular-3.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tajawal-Bold';
+    src: url('/fonts/Tajawal-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}

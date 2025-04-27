@@ -1,0 +1,557 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.services-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #f8f9fa;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-page .Logo {
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.services-page .Logo:hover {
+  transform: scale(1.05);
+}
+
+.back-arrow-container {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.back-arrow-container:hover {
+  transform: translateX(-5px);
+}
+
+.back-arrow-n {
+  font-size: 24px;
+  color: #1d3557;
+  margin-right: 8px;
+  transition: color 0.3s ease;
+}
+
+.back-arrow-text {
+  font-family: "Tajawal", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1d3557;
+  transition: color 0.3s ease;
+}
+
+.back-arrow-container:hover .back-arrow-n,
+.back-arrow-container:hover .back-arrow-text {
+  color: #e63a46;
+}
+
+.services-page .text-wrapper {
+  color: #1d3557;
+  direction: rtl;
+  font-family: "Tajawal", sans-serif;
+  font-size: 54px;
+  font-weight: 600;
+  position: absolute;
+  top: 120px;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.services-page .text-wrapper-1 {
+  color: #1d3557;
+  direction: rtl;
+  font-family: "Tajawal", sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  position: absolute;
+  top: 190px;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.services-page .text-wrapper-subtext {
+  color: #bfbfbf;
+  direction: rtl;
+  font-family: "Tajawal", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  position: absolute;
+  top: 230px;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  opacity: 1;
+  /* Changed from 0 to be visible by default */
+  transform: translateY(0);
+  /* Changed to show by default */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  margin-top: 1%;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  z-index: 5;
+  padding: 0 20px;
+  margin-top: 100px;
+  /* Center horizontally */
+  margin-left: auto;
+  margin-right: auto;
+  /* Added for proper centering */
+}
+
+.BlueBox {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 250px;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.RedBlueBox {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 500px;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* New service cards container */
+.services-options-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  z-index: 10;
+  margin-top: 80px;
+}
+
+.services-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.service-card {
+  width: 360px;
+  height: 320px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  border: 2px solid rgba(29, 53, 87, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  direction: rtl;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #1d3557, #457b9d);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover::before,
+.service-card-hovered::before {
+  opacity: 1;
+}
+
+.service-card:hover,
+.service-card-hovered {
+  border-color: #1d3557;
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(29, 53, 87, 0.15);
+}
+
+.service-card-icon {
+  width: 90px;
+  height: 90px;
+  background-color: rgba(29, 53, 87, 0.1);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-card-icon,
+.service-card-hovered .service-card-icon {
+  background-color: #1d3557;
+  transform: scale(1.05);
+}
+
+.service-card .icon {
+  font-size: 40px;
+  color: #1d3557;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .icon,
+.service-card-hovered .icon {
+  color: white;
+}
+
+.service-card-title {
+  font-family: "Tajawal", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1d3557;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.service-card-description {
+  font-family: "Tajawal", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #4a4a4a;
+  transition: color 0.3s ease;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 992px) {
+  .services-cards-container {
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+    /* Center the cards */
+  }
+
+  .content-container {
+    margin-top: 350px;
+    padding: 0 20px;
+    /* Add consistent padding */
+  }
+}
+
+@media (max-width: 768px) {
+  .services-page {
+    padding: 20px;
+    height: auto;
+    min-height: 100vh;
+    /* Ensure it keeps centering content */
+    justify-content: flex-start;
+    padding-top: 250px;
+    /* Add top padding to push content down */
+  }
+
+  .services-page .Logo {
+    right: 20px;
+    height: 60px;
+    width: 60px;
+  }
+
+  .back-arrow-container {
+    left: 20px;
+    top: 20px;
+  }
+
+  .BlueBox {
+    width: 180px;
+  }
+
+  .RedBlueBox {
+    width: 350px;
+  }
+
+  .service-card {
+    width: 320px;
+    height: 300px;
+  }
+
+  .services-page .text-wrapper {
+    font-size: 40px;
+    top: 100px;
+  }
+
+  .services-page .text-wrapper-1 {
+    font-size: 18px;
+    top: 160px;
+    width: 90%;
+    justify-self: center;
+  }
+
+  .services-page .text-wrapper-subtext {
+    font-size: 16px;
+    top: 200px;
+    width: 90%;
+  }
+
+  .content-container {
+    margin-top: -60px;
+    /* Center the container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .services-options-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-page {
+    padding-top: 220px;
+    /* Adjust top padding for smaller screens */
+  }
+
+  .services-page .Logo {
+    height: 50px;
+    width: 50px;
+  }
+
+  .back-arrow-container {
+    left: 15px;
+    top: 15px;
+  }
+
+  .back-arrow-n {
+    font-size: 20px;
+  }
+
+  .back-arrow-text {
+    font-size: 14px;
+  }
+
+  .BlueBox {
+    width: 150px;
+  }
+
+  .RedBlueBox {
+    width: 250px;
+  }
+
+  .service-card {
+    width: 280px;
+    padding: 20px;
+  }
+
+  .service-card-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .service-card .icon {
+    font-size: 32px;
+  }
+
+  .service-card-title {
+    font-size: 20px;
+  }
+
+  .service-card-description {
+    font-size: 14px;
+  }
+
+  .services-page .text-wrapper {
+    font-size: 36px;
+  }
+
+  .services-page .text-wrapper-1 {
+    font-size: 18px;
+  }
+
+  .services-page .text-wrapper-subtext {
+    font-size: 14px;
+  }
+
+  .content-container {
+    margin-top: 200px;
+    padding: 0 10px;
+    /* Smaller padding for smaller screens */
+  }
+
+  /* Ensure cards are centered */
+  .services-cards-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Language Toggle for Services Page */
+.services-language-toggle {
+  position: fixed;
+  top: 20px;
+  left: 80px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-speed) ease;
+}
+
+.services-language-toggle:hover {
+  background: rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
+}
+
+.services-language-icon {
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+.services-language-selector {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 100px;
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.services-language-toggle:hover .services-language-selector {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.services-language-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: #333;
+}
+
+.services-language-option.active {
+  background-color: #E63A46;
+  color: white;
+}
+
+.services-language-option:not(.active) {
+  color: #555;
+}
+
+.services-language-option:not(.active):hover {
+  background-color: #f1f1f1;
+}
+
+/* Triangle pointer for dropdown */
+.services-language-selector:before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 15px;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+/* Same positioning for both RTL and LTR */
+[dir="ltr"] .services-language-toggle {
+  left: 80px;
+}
+
+[dir="ltr"] .services-language-selector:before {
+  left: 15px;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 480px) {
+  .services-language-toggle {
+    top: 10px;
+    left: 50px;
+    font-size: 24px;
+  }
+}
