@@ -9,7 +9,7 @@
   --light-color: #ffffff;
   --bg-color: #f8f7f7;
   --text-color: #333333;
-  --heading-font: "Tajawal-Regular", sans-serif;
+  --heading-font: "DINNextLTArabic-Bold", "Tajawal-Regular", sans-serif;
   --body-font: "Tajawal-Regular", Helvetica, sans-serif;
   --transition: all 0.3s ease-in-out;
 }
